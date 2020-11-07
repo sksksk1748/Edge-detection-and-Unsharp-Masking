@@ -20,7 +20,7 @@
     8. 轉成 8bit，儲存影像檔
 
 * Unsharp Masking
-    * [詳細卷積原理請看【HackMD】影像處理實作筆記](https://hackmd.io/wy83HZzVSFSjIW16y6Rtfg)
+    * [詳細卷積原理請看【HackMD】影像處理實作筆記](https://hackmd.io/@4_NJd1RURCuQpLve1gMcVw/ryhPYubtP)
     1. 輸入影像模糊參數(例如均值濾波的濾鏡尺寸 n)
     2. 讀取附件的 8-bit 灰階影像
     3. 顯示輸入影像
