@@ -90,6 +90,16 @@ for i in range(0, rows):
 
         outputimg[i, j] = sobelimagex[i, j] + sobelimagey[i, j]
 
+        # 如果sobelx跟sobely都是1的情況
+        if outputimg[i, j] >= 2:
+            outputimg[i, j] = 1
+
+# 8-1. 轉成 8bit
+outputimg = outputimg * 255
+
 cv2.imshow('Sobel image', outputimg)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# 8-2. 儲存影像檔
+cv2.imwrite('image/ntust_gray_1.jpg',outputimg)
