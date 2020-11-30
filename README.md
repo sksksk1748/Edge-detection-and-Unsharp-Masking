@@ -47,30 +47,30 @@ ImageHW1
 ## Result
 
 * Edge detection
-    * ![](https://i.imgur.com/sa4bN9L.png)
+    * ![](images/sobel.png)
 
 * Unsharp Masking
-    * ![](https://i.imgur.com/IAWdDc3.png)
+    * ![](images/sharp.png)
 
 * Color Segmentation 
     * sky.jpg 跟 sky_mask.jpg AND 後的結果
-        * ![](https://i.imgur.com/MiuKW0j.jpg)
-        * ![](https://i.imgur.com/UXEBgee.jpg)
-        * ![](https://i.imgur.com/ey6yQOD.jpg) 
+        * ![](images/sky.jpg)
+        * ![](images/sky_mask.jpg)
+        * ![](images/rgb_mask_1.jpg) 
     * 色彩空間圖(RGB / YCbCr / HSV)
-        * ![](https://i.imgur.com/bd7bu0U.jpg)
+        * ![](images/colorspaceSunflower.png)
     * sky_2.jpg 將 sky.jpg 和 sky_mask.jpg AND 後的圖，用圖裡藍天的平均值與標準差分割向日葵圖
-        * ![](https://i.imgur.com/X9Zxhl1.png)
-        * ![](https://i.imgur.com/6G7XhuI.png)
+        * ![](images/maskSunflower_1.png)
+        * ![](images/maskSunflower_2.png)
     * 填入彩色與黑白
-        * ![](https://i.imgur.com/6o5uM2j.png)
-        * ![](https://i.imgur.com/nLiHiFZ.png)
+        * ![](images/drawSunflower_1.png)
+        * ![](images/drawSunflower_2.png)
     * 色彩空間圖(RGB / YCbCr / HSV)
-        * ![](https://i.imgur.com/YHHlrga.jpg)
+        * ![](images/colorspaceCat.png)
     * sky_8.jpg 將 sky.jpg 和 sky_mask.jpg AND 後的圖，用圖裡藍天的平均值與標準差分割貓咪圖
-        * ![](https://i.imgur.com/iDSfkEk.png)
+        * ![](images/maskCat.png)
     * 填入彩色與黑白
-        * ![](https://i.imgur.com/WlltoFr.png)
+        * ![](images/drawCat.png)
 ## Reference
 
 * NTUST , Pei-Li Sun PROFESSOR
