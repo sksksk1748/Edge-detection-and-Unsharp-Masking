@@ -65,12 +65,17 @@ ImageHW1
     * 填入彩色與黑白
         * ![](images/drawSunflower_1.png)
         * ![](images/drawSunflower_2.png)
+    * 填入灰階圖與藍天背景為色彩空間
+        * ![](images/drawgraySunflower_1.png)
+        * ![](images/drawgraySunflower_2.png)
     * 色彩空間圖(RGB / YCbCr / HSV)
         * ![](images/colorspaceCat.png)
     * sky_8.jpg 將 sky.jpg 和 sky_mask.jpg AND 後的圖，用圖裡藍天的平均值與標準差分割貓咪圖
         * ![](images/maskCat.png)
     * 填入彩色與黑白
         * ![](images/drawCat.png)
+    * 填入灰階圖與藍天背景為色彩空間
+        * ![](images/drawgrayCat.png)
 ## Reference
 
 * NTUST , Pei-Li Sun PROFESSOR
