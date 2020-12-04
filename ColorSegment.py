@@ -208,6 +208,55 @@ def drawcolor(im_colorSpace, colorNum, displayWin):
         cv2.imshow('drawImg2_HSV', im_colorSpace)
         #cv2.imwrite('image/drawImg2_HSV.jpg',im_colorSpace)
 
+# 黑白灰階圖填入mask區域
+def drawgray(im_colorSpace, colorNum, displayWin, draw_grayImg):
+    # colorNum : 1 is rgb, 2 is YCbCr, 3 is HSV
+    # displayWin : 1 is fist image window, 2 is second image window 
+    # -- 這樣做是因為, image 1 跟 image 2 都有call drawcolor()
+    # -- 可是最後只會顯示 image2, 因為在副程式裡 inshow()的 window 名稱(draw_RGB)共用
+    # -- example ==> cv2.imshow('draw_RGB', im_colorSpace)
+    # draw_grayImg : ex. draw_grayImg2, draw_grayImg3
+
+    mean = []
+
+    im_R = im_colorSpace[:,:,0]
+    im_G = im_colorSpace[:,:,1]
+    im_B = im_colorSpace[:,:,2]
+
+
+    rows = len(im_R)  # first image 600/ second image 480
+    cols = len(im_R[0]) # first image 800/ second image 640
+
+
+    for i in range(0, rows):
+        for j in range(0, cols):
+            if im_R[i][j] == 0 :
+                im_R[i][j] = draw_grayImg[i][j]
+                im_G[i][j] = draw_grayImg[i][j]
+                im_B[i][j] = draw_grayImg[i][j]
+                
+
+
+    if colorNum == 1 and displayWin == 1:           
+        cv2.imshow('drawgrayImg_RGB', im_colorSpace)
+        #cv2.imwrite('image/drawImg_RGB.jpg',im_colorSpace)
+    if colorNum == 1 and displayWin == 2:           
+        cv2.imshow('drawgrayImg2_RGB', im_colorSpace)
+        #cv2.imwrite('image/drawImg2_RGB.jpg',im_colorSpace)
+
+    if colorNum == 2 and displayWin == 1:
+        cv2.imshow('drawgrayImg_YCbCr', im_colorSpace)
+        #cv2.imwrite('image/drawImg_YCbCr.jpg',im_colorSpace)
+    if colorNum == 2 and displayWin == 2:
+        cv2.imshow('drawgrayImg2_YCbCr', im_colorSpace)
+        #cv2.imwrite('image/drawImg2_YCbCr.jpg',im_colorSpace)
+
+    if colorNum == 3 and displayWin == 1:
+        cv2.imshow('drawgrayImg_HSV', im_colorSpace)
+        #cv2.imwrite('image/drawImg_HSV.jpg',im_colorSpace)
+    if colorNum == 3 and displayWin == 2:
+        cv2.imshow('drawgrayImg2_HSV', im_colorSpace)
+        #cv2.imwrite('image/drawImg2_HSV.jpg',im_colorSpace)
 """
 ===================================================================
 = Step 1 : 
@@ -225,6 +274,12 @@ img_3 = cv2.imread('image/sky_8.jpg')
 #cv2.imshow('img_3', img_3)
 mask = cv2.imread('image/sky_mask.jpg',0)
 
+# 把原圖變灰階,因 drawgray function 需要把非藍天區域的 mask(黑色區域) 貼上對應的灰階 pixel
+draw_grayImg2 = cv2.cvtColor(img_2, cv2.COLOR_BGR2GRAY)
+draw_grayImg3 = cv2.cvtColor(img_3, cv2.COLOR_BGR2GRAY)
+
+#cv2.imshow('draw_grayImg2', draw_grayImg2)
+#cv2.imshow('draw_grayImg3', draw_grayImg3)
 
 # 轉色彩空間 YCbCr
 YCbCr_img = cv2.cvtColor(img, cv2.COLOR_BGR2YCR_CB)
@@ -298,7 +353,6 @@ im3_rgbmask = sd_magMask(img_3, 1, 5)
 im3_YCbCrmask = sd_magMask(YCbCr_img3, 2, 4)
 im3_hsvmask = sd_magMask(hsv_img3, 3, 5)
 
-
 #cv2.imshow('im2_RGB_Mask', im2_rgbmask)
 #cv2.imshow('im2_YCbCr_Mask', im2_YCbCrmask)
 #cv2.imshow('im2_HSV_Mask', im2_hsvmask)
@@ -331,16 +385,26 @@ im3_hsv = cv2.bitwise_and(hsv_img3, hsv_img3, mask = im3_hsvmask)
 
 #cv2.imshow('im3_RGB_bitwise_and()_Mask', im3_rgb)
 #cv2.imshow('im3_YCbCr_bitwise_and()_Mask', im3_ycbcr)
-#cv2.imshow('im3_HSV_bitwise_and()_Mask', im3_hsv)
+#v2.imshow('im3_HSV_bitwise_and()_Mask', im3_hsv)
 
 # 顯示把mask後的圖著色的結果
-drawcolor(im2_rgb,1,1)
-drawcolor(im2_ycbcr,2,1)
-drawcolor(im2_hsv,3,1)
+#drawcolor(im2_rgb,1,1)
+#drawcolor(im2_ycbcr,2,1)
+#drawcolor(im2_hsv,3,1)
 
-drawcolor(im3_rgb,1,2)
-drawcolor(im3_ycbcr,2,2)
-drawcolor(im3_hsv,3,2)
+#drawcolor(im3_rgb,1,2)
+#drawcolor(im3_ycbcr,2,2)
+#drawcolor(im3_hsv,3,2)
+
+drawgray(im2_rgb,1,1,draw_grayImg2)
+drawgray(im2_ycbcr,2,1,draw_grayImg2)
+drawgray(im2_hsv,3,1,draw_grayImg2)
+
+drawgray(im3_rgb,1,2,draw_grayImg3)
+drawgray(im3_ycbcr,2,2,draw_grayImg3)
+drawgray(im3_hsv,3,2,draw_grayImg3)
+
+
 
 end_time = time()
 print("執行了這支程式共花了 {:.3f}".format(end_time-start_time)," 秒")
