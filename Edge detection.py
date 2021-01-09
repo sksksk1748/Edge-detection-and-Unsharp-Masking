@@ -57,9 +57,12 @@ def sobelY(inputimg):
 
 
 # 1. 讀取附件的 8-bit 灰階影像
+
 # 相對路徑 image/cameraman.jpg 替代方案
-path = os.path.join(os.path.dirname(__file__), 'image', 'cameraman.jpg')
-inputimg = cv2.imread(path, 0)
+# https://reurl.cc/Q7p4d0
+path = os.path.join(os.path.dirname(__file__), 'image/')
+
+inputimg = cv2.imread(path + 'cameraman.jpg', 0)
 
 # 2. 顯示輸入影像
 cv2.imshow('Original image', inputimg)

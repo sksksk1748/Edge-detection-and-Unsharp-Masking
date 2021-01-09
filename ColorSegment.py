@@ -13,6 +13,7 @@ import cv2
 import math
 import random
 from time import time
+import os
 
 start_time = time()
 
@@ -265,14 +266,18 @@ def drawgray(im_colorSpace, colorNum, displayWin, draw_grayImg):
 ===================================================================
 """
 
+# 相對路徑 image/cameraman.jpg 替代方案
+# https://reurl.cc/Q7p4d0
+path = os.path.join(os.path.dirname(__file__), 'image/')
+
 # read original image and mask image
-img = cv2.imread('image/sky.jpg')
+img = cv2.imread(path + 'sky.jpg')
 #cv2.imshow('img', img)
-img_2 = cv2.imread('image/sky_2.jpg')
+img_2 = cv2.imread(path + 'sky_2.jpg')
 #cv2.imshow('img_2', img_2)
-img_3 = cv2.imread('image/sky_8.jpg')
+img_3 = cv2.imread(path + 'sky_8.jpg')
 #cv2.imshow('img_3', img_3)
-mask = cv2.imread('image/sky_mask.jpg',0)
+mask = cv2.imread(path + 'sky_mask.jpg',0)
 
 # 把原圖變灰階,因 drawgray function 需要把非藍天區域的 mask(黑色區域) 貼上對應的灰階 pixel
 draw_grayImg2 = cv2.cvtColor(img_2, cv2.COLOR_BGR2GRAY)
