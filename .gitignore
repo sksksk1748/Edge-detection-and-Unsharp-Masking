@@ -143,5 +143,5 @@ cython_debug/
 ### Pycharm ###
 .idea/*
 
-### floder images ###
+### folder images ###
 images/*
