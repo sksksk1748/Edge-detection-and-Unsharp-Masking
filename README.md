@@ -8,6 +8,22 @@
 
 * Image Processing , Edge detection and Unsharp Masking , ColorSegmentation 
 
+## Environment Install Step
+```bash
+# step 1
+(base)> conda create --name image python=3.7
+# step 2
+(image)> conda activate image
+# step 3
+(image)> pip install numpy
+# step 4
+(image)> pip install opencv-contrib-python
+# step 5
+(image)> pip install opencv-python
+# step 6 check installed list
+(image)> conda list
+```
+
 ## Algorithm
 * Edge detection
     1. 讀取附件的 8-bit 灰階影像
