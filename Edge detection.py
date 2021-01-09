@@ -1,6 +1,7 @@
 # 影像邊緣偵測
 import numpy as np
 import cv2
+import os
 
 
 # 卷積filter，並return各pixel跟filter相乘的sum
@@ -56,7 +57,10 @@ def sobelY(inputimg):
 
 
 # 1. 讀取附件的 8-bit 灰階影像
-inputimg = cv2.imread('image/cameraman.jpg', 0)
+# 相對路徑 image/cameraman.jpg 替代方案
+path = os.path.join(os.path.dirname(__file__), 'image', 'cameraman.jpg')
+inputimg = cv2.imread(path, 0)
+
 # 2. 顯示輸入影像
 cv2.imshow('Original image', inputimg)
 
